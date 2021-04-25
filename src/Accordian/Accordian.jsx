@@ -1,6 +1,7 @@
 import React from "react";
 import { useAccordian } from "./hooks";
 import "./Accordian.css";
+import { Box } from "../design/Box";
 
 export function BaseAccordian(props) {
   const { openIndexes, handleItemClick } = useAccordian(props);
@@ -42,7 +43,7 @@ export function AccordianItem({
   children
 }) {
   return (
-    <div
+    <Box
       className={`accordianItem ${
         direction === "horizontal"
           ? "accordianItem--row"
@@ -50,6 +51,6 @@ export function AccordianItem({
       }  ${className}`}
     >
       {children}
-    </div>
+    </Box>
   );
 }

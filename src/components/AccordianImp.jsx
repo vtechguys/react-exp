@@ -6,6 +6,7 @@ import {
   AccordianItem,
   useAccordian
 } from "../Accordian";
+import { Box } from "../design/Box";
 import { combineReducer } from "../utils";
 
 export function AccordianImpl({ items }) {
@@ -14,7 +15,7 @@ export function AccordianImpl({ items }) {
     openIndexes: [0]
   });
   return (
-    <div style={{ width: 300 }}>
+    <Box style={{ width: 300 }} dataComponentName="AccordianImpl">
       {items.map((item, i) => {
         const isOpen = openIndexes.includes(i);
         return (
@@ -26,6 +27,6 @@ export function AccordianImpl({ items }) {
           </AccordianItem>
         );
       })}
-    </div>
+    </Box>
   );
 }

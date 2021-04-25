@@ -31,10 +31,11 @@ export function toggleReducer(state, { type }) {
 
 export function useTogggle({ initIsOn = false, reducer = toggleReducer } = {}) {
   const [isOn, dispatch] = useReducer(reducer, initIsOn);
+  // functionalities
   const switchOn = () => dispatch({ type: actionTypes.switchOn });
   const switchOff = () => dispatch({ type: actionTypes.switchOff });
   const toggle = () => dispatch({ type: actionTypes.toggle });
-
+  // toggle props
   const getToggleProps = (props) => {
     return {
       ...props,

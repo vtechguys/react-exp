@@ -1,3 +1,4 @@
+import { Box } from "../design/Box";
 import { makeStyles } from "../vanilla.styles";
 
 const useStylesLogo = makeStyles({
@@ -35,35 +36,26 @@ const useStylesNav = makeStyles({
     fontSize: 14
   }
 });
+
+const unAuthNav = ["Login"];
+const authNav = ["Profile", "Settings"];
+
 export function Nav({ isAuthenticated }) {
   const classes = useStylesNav();
-  if (!isAuthenticated) {
-    return (
-      <div className={classes.navRoot}>
-        <ul className={classes.navList}>
+
+  const navs = !isAuthenticated ? unAuthNav : authNav;
+
+  return (
+    <Box className={classes.navRoot} dataComponentName="Nav">
+      <ul className={classes.navList}>
+        {navs.map((nav) => (
           <li className={classes.navListItem}>
             <a href="/" className={classes.navListItemLink}>
-              Login
+              {nav}
             </a>
           </li>
-        </ul>
-      </div>
-    );
-  }
-  return (
-    <div className={classes.navRoot}>
-      <ul className={classes.navList}>
-        <li className={classes.navListItem}>
-          <a href="/" className={classes.navListItemLink}>
-            Profile
-          </a>
-        </li>
-        <li className={classes.navListItem}>
-          <a href="/" className={classes.navListItemLink}>
-            Setttings
-          </a>
-        </li>
+        ))}
       </ul>
-    </div>
+    </Box>
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "./hooks/useToggle";
 import { Switch } from "./components/Switch";
 import { useState } from "react";
+import { Box } from "./design/Box";
 /**
  * This code sandbox introduces:
  *  1. Layout component/ composition
@@ -54,38 +55,41 @@ const useAppStyles = makeStyles({
 export default function App() {
   const classes = useAppStyles();
   return (
-    <div className={classes.appRoot}>
+    <Box className={classes.appRoot} dataComponentName="App">
       {/* 
-        composition: react is famous for composition ablity of components, 
-        folloing is an example of composition ,
+        composition: react is famous for composition model of components, 
+        following is an example of composition ,
         read more: https://reactjs.org/docs/composition-vs-inheritance.html
       */}
       <Header Logo={<Logo />} Nav={<Nav isAuthenticated={true} />} />
-      <div className="flex-column flex-grow-1 justify-center align-items-center">
-        <div className="flex-column flex-grow-1 align-items-center">
+      <Box
+        className="flex-column flex-grow-1 justify-center align-items-center"
+        dataComponentName="AppBody"
+      >
+        <Box className="flex-column flex-grow-1 align-items-center">
           <h1>Layout component & state reducer pattern</h1>
-          <div className="flex-row flex-grow-1 justify-sbw">
-            <div className={classes.accordianShowcase}>
+          <Box className="flex-row flex-grow-1 justify-sbw">
+            <Box className={classes.accordianShowcase}>
               <h2>Render way</h2>
               {/* Taking composition to next level */}
               <AccordianNative items={items} />
-            </div>
-            <div className={classes.accordianShowcase}>
+            </Box>
+            <Box className={classes.accordianShowcase}>
               <h2>Hooks way</h2>
               <AccordianImpl items={items} />
-            </div>
-          </div>
-        </div>
-        <div className="flex-column flex-grow-1 align-item-center justify-center">
+            </Box>
+          </Box>
+        </Box>
+        <Box className="flex-column flex-grow-1 align-item-center justify-center">
           <h2>Switch button with state reducer pattern</h2>
           <p>
             Switch has special usecase if clicked more then 5 times then disable
           </p>
           <SwitchStateReducerPattern />
-        </div>
-      </div>
+        </Box>
+      </Box>
       <hr />
-      <div className="flex-column flex-grow-1 justify-center align-items-center">
+      <Box className="flex-column flex-grow-1 justify-center align-items-center">
         <h1>Just some thoughts</h1>
         <p>
           CSS in Js are evalauted at run time and for each render.
@@ -112,8 +116,8 @@ export default function App() {
         </p>
 
         <img src="/twitter-css-in-js.png" alt="Rayan on css-in-js" />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

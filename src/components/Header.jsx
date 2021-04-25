@@ -1,6 +1,7 @@
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { makeStyles } from "../vanilla.styles";
 import { breakpoints } from "../design/breakpoints";
+import { Box } from "../design/Box";
 // Header is layout component
 // It layouts a bunch of JSX cmponents
 // It decides layout of each component based on diffenrent screen
@@ -24,11 +25,11 @@ export function Header({ Logo = null, Nav = null }) {
   const isMobile = useMediaQuery(breakpoints.xs);
   const classes = useStylesHeader();
   return (
-    <div className={classes.header}>
-      <div>{Logo}</div>
+    <Box className={classes.header} dataComponentName="Header">
+      <Box>{Logo}</Box>
       {/* exclusively decides layout of nav omponent*/}
       {/* The all sexy useMediaQuery() */}
-      {isMobile ? null : <div>{Nav}</div>}
-    </div>
+      {isMobile ? null : <Box>{Nav}</Box>}
+    </Box>
   );
 }
