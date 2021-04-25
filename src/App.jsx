@@ -131,7 +131,7 @@ function SwitchStateReducerPattern() {
     // reducer: another sexy pattern called 'state reducer pattern'
     reducer(state, action) {
       const nextState = toggleReducer(state, action);
-      if (count >= 4 && action.type === toggleActionTypes.toggle) {
+      if (count > 5 && action.type === toggleActionTypes.toggle) {
         return state;
       }
       setCount((c) => c + 1);

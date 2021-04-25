@@ -49,7 +49,7 @@ export function Nav({ isAuthenticated }) {
     <Box className={classes.navRoot} dataComponentName="Nav">
       <ul className={classes.navList}>
         {navs.map((nav) => (
-          <li className={classes.navListItem}>
+          <li className={classes.navListItem} key={nav}>
             <a href="/" className={classes.navListItemLink}>
               {nav}
             </a>
