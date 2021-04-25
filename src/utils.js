@@ -6,3 +6,8 @@ export function combineReducer(...reducers) {
     );
   };
 }
+export function mergeFns(...fns) {
+  return function mergedFn(...args) {
+    return fns.forEach((fn) => fn(...args));
+  };
+}

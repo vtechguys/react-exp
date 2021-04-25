@@ -1,16 +1,16 @@
 import { actionTypes } from "./actiontypes";
-export function stateReducer(state, nextActionType, itemIndex) {
+export function stateReducer(state, { type, payload: itemIndex }) {
   return {
     ...state,
     openIndexes:
-      nextActionType === actionTypes.open
+      type === actionTypes.open
         ? [...state.openIndexes, itemIndex]
         : state.openIndexes.filter((c) => c !== itemIndex)
   };
 }
 
-export function singleReducer(state, action, itemIndex) {
-  if (action === actionTypes.open) {
+export function singleReducer(state, { type, payload: itemIndex }) {
+  if (type === actionTypes.open) {
     return {
       ...state,
       openIndexes: [itemIndex]

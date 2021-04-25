@@ -11,13 +11,12 @@ export function useAccordian({
   const { openIndexes } = state;
 
   const handleItemClick = (itemIndex) => {
-    const nextActionType = openIndexes.includes(itemIndex)
+    const type = openIndexes.includes(itemIndex)
       ? actionTypes.close
       : actionTypes.open;
     const nextState = optionStateReducer
-      ? optionStateReducer(state, nextActionType, itemIndex)
-      : stateReducer(state, nextActionType, itemIndex);
-    console.log(nextState);
+      ? optionStateReducer(state, { type, payload: itemIndex })
+      : stateReducer(state, { type, payload: itemIndex });
     setState(nextState);
   };
 

@@ -1,6 +1,6 @@
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { makeStyles } from "../vanilla.styles";
-import { breakpointMobile } from "../design/breakpoints";
+import { breakpoints } from "../design/breakpoints";
 // Header is layout component
 // It layouts a bunch of JSX cmponents
 // It decides layout of each component based on diffenrent screen
@@ -21,7 +21,7 @@ const useStylesHeader = makeStyles({
 export function Header({ Logo = null, Nav = null }) {
   // Just a fun way to use media query in component
   // to do screen based conditional rendering
-  const isMobile = useMediaQuery(breakpointMobile);
+  const isMobile = useMediaQuery(breakpoints.xs);
   const classes = useStylesHeader();
   return (
     <div className={classes.header}>

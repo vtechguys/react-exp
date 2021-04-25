@@ -1,6 +1,6 @@
 import React from "react";
-import { makeStyles } from "../vanilla.styles";
 import { useAccordian } from "./hooks";
+import "./Accordian.css";
 
 export function BaseAccordian(props) {
   const { openIndexes, handleItemClick } = useAccordian(props);
@@ -11,16 +11,29 @@ export function BaseAccordian(props) {
   );
 }
 
-export function AccordianButton({ onClick, children, className = "" }) {
+export function AccordianButton({ isOpen, onClick, children, className = "" }) {
   return (
-    <button onClick={onClick} className={`flex-grow-1 ${className}`}>
+    <button
+      onClick={onClick}
+      className={`accordianButton  accordianButton--${
+        isOpen ? "open" : "close"
+      }  ${className}`}
+    >
       {children}
     </button>
   );
 }
 
-export function AccordianContent({ className = "", children }) {
-  return <div className={`flex-grow-1 ${className}`}>{children}</div>;
+export function AccordianContent({ isOpen, className = "", children }) {
+  return (
+    <div
+      className={`accordianContent accordianContent--${
+        isOpen ? "open" : "close"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function AccordianItem({
@@ -28,9 +41,14 @@ export function AccordianItem({
   className = "",
   children
 }) {
-  const flexDirection = direction === "horizontal" ? "row" : "column";
   return (
-    <div className={`flex-grow-1 flex-${flexDirection} ${className}`}>
+    <div
+      className={`accordianItem ${
+        direction === "horizontal"
+          ? "accordianItem--row"
+          : "accordianItem--column"
+      }  ${className}`}
+    >
       {children}
     </div>
   );
